@@ -56,7 +56,7 @@ def restartBot():
     python = sys.executable
     os.execl(python, python, *sys.argv)
 def cTime_to_datetime(unixtime):
-    tz = pytz.timezone("Asia/Jakarta")
+    tz = pytz.timezone("Asia/Bangkok")
     timeNow = datetime.now(tz=tz)
     return datetime.fromtimestamp(str(timeNow))
 def dt_to_str(dt):
@@ -72,7 +72,7 @@ def waktuReb(secs):
 def gbirth(id,to,text):
     date = "%d-%m-%Y"
     timer = "%H:%M:%S"
-    datecrt = time.strftime("Mini Selfbot:\n@! it, \nGroup created:\n  • Date:{}\n  • Time:{}".format(str(date),timer), time.localtime(int(text.createdTime) / 1000))
+    datecrt = time.strftime("SKT Selfbot:\n@! it, \nGroup created:\n  • Date:{}\n  • Time:{}".format(str(date),timer), time.localtime(int(text.createdTime) / 1000))
     client.sendReplyMention(id,to,datecrt,"",[Goperation])
 def time_converter(time):
     converted_time = datetime.datetime.fromtimestamp(
@@ -252,7 +252,7 @@ def sendOpera(to, profile):
   }
 }
     opera = [opera1,opera2,opera3]
-    senorita = {"type": "flex","altText": "The G - Operation","contents": {"type": "carousel","contents": opera}}
+    senorita = {"type": "flex","altText": "The SKT - Operation","contents": {"type": "carousel","contents": opera}}
     client.sendTemp(to,senorita)
  
 def sendMention(to, text="", mids=[]):
@@ -603,15 +603,15 @@ def clientBot(op):
                            if manage["keyname"]=="":gop= ""
                            else: gop = manage["keyname"].title() + " "
                            try:
-                             ang_ = "  💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 Mini Selfbot 」"
+                             ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
+                             ang_ += "\n   「 SKT Selfbot 」"
                              ang_ += "\n\nMain Menu:"
                              ang_ += "\n  1. " + gop + "Getmenu"
                              ang_ += "\n  2. " + gop + "Selfmenu"
                              ang_ += "\n  3. " + gop + "Groupmenu"
                              ang_ += "\n  4. " + gop + "Groupsetting"
                              ang_ += "\n  5. " + gop + "Groupprotect"
-                             ang_ += "\n\n• G-Operation V.02"
+                             ang_ += "\n\n• SKT-Operation V.02"
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
@@ -623,8 +623,8 @@ def clientBot(op):
                            if manage["keyname"]=="":gop= ""
                            else: gop = manage["keyname"].title() + " "
                            try:
-                             ang_ = "  💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 Mini Selfbot 」"
+                             ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
+                             ang_ += "\n   「 SKT Selfbot 」"
                              ang_ += "\n\nGet Menu:"
                              ang_ += "\n  1. " + gop + "Geturl"
                              ang_ += "\n  2. " + gop + "Getmid @"
@@ -633,7 +633,7 @@ def clientBot(op):
                              ang_ += "\n  5. " + gop + "Getname @"
                              ang_ += "\n  6. " + gop + "Getstatus @"
                              ang_ += "\n  7. " + gop + "Getgroups @"
-                             ang_ += "\n\n• G-Operation V.02"
+                             ang_ += "\n\n• SKT-Operation V.02"
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
@@ -645,8 +645,8 @@ def clientBot(op):
                            if manage["keyname"]=="":gop= ""
                            else: gop = manage["keyname"].title() + " "
                            try:
-                             ang_ = "  💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 Mini Selfbot 」"
+                             ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
+                             ang_ += "\n   「 SKT Selfbot 」"
                              ang_ += "\n\nSelf Menu:"
                              ang_ += "\n  1. " + gop + "Me"
                              ang_ += "\n  2. " + gop + "Help"
@@ -659,7 +659,7 @@ def clientBot(op):
                              ang_ += "\n  6. " + gop + "Updatepict"
                              ang_ += "\n  5. " + gop + "Updatedual"
                              ang_ += "\n  7. " + gop + "Updatename:"
-                             ang_ += "\n\n• G-Operation V.02"
+                             ang_ += "\n\n• SKT-Operation V.02"
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
@@ -671,8 +671,8 @@ def clientBot(op):
                            if manage["keyname"]=="":gop= ""
                            else: gop = manage["keyname"].title() + " "
                            try:
-                             ang_ = "  💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 Mini Selfbot 」"
+                             ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
+                             ang_ += "\n   「 SKT Selfbot 」"
                              ang_ += "\n\nGroup Menu:"
                              ang_ += "\n  1. " + gop + "/Bye"
                              ang_ += "\n  2. " + gop + "Ginfo"
@@ -699,7 +699,7 @@ def clientBot(op):
                              ang_ += "\n  18. " + gop + "Nuke set: txt"
                              ang_ += "\n  19. " + gop + "Groupcast: txt"
                              ang_ += "\n  20. " + gop + "Groupname: txt"
-                             ang_ += "\n\n• G-Operation V.02"
+                             ang_ += "\n\n• SKT-Operation V.02"
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
@@ -711,8 +711,8 @@ def clientBot(op):
                            if manage["keyname"]=="":gop= ""
                            else: gop = manage["keyname"].title() + " "
                            try:
-                             ang_ = "  💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 Mini Selfbot 」"
+                             ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
+                             ang_ += "\n   「 SKT Selfbot 」"
                              ang_ += "\n\nGroup settings:"
                              ang_ += "\n  1. " + gop + "Settings"
                              ang_ += "\n  2. " + gop + "Lurk reset"
@@ -728,7 +728,7 @@ def clientBot(op):
                              ang_ += "\n  12. " + gop + "Welcome set: text"
                              ang_ += "\n  13. " + gop + "Auto welcome on/off"
                              ang_ += "\n  14. " + gop + "Welcome msg on/off"
-                             ang_ += "\n\n• G-Operation V.02"
+                             ang_ += "\n\n• SKT-Operation V.02"
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
@@ -741,7 +741,7 @@ def clientBot(op):
                            if manage["keyname"]=="":gop= ""
                            else: gop = manage["keyname"].title() + " "
                            try:
-                             ang_ = "  💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
+                             ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
                              ang_ += "\n   「 Mini Selfbot 」"
                              ang_ += "\n\nGroup Protect:"
                              ang_ += "\n  1. " + gop + "Protect staff"
@@ -760,7 +760,7 @@ def clientBot(op):
                              ang_ += "\n  14. " + gop + "Clearwhitelist"
                              ang_ += "\n  15. " + gop + "Clearblacklist"
                              ang_ += "\n  16. " + gop + "Findblacklist"
-                             ang_ += "\n\n• G-Operation V.02"
+                             ang_ += "\n\n• SKT-Operation V.02"
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
@@ -847,7 +847,7 @@ def clientBot(op):
                                           no = (no+1)
                                if becek == "":client.sendMessage(msg.to, "User Not found")                                  
                                else:
-                                  tobat =  "• G-Oᴘᴇʀᴀᴛɪᴏɴ\n• Tracking user🔎\n\n   User found in:%s"%(becek)
+                                  tobat =  "• SKT-Oᴘᴇʀᴀᴛɪᴏɴ\n• Tracking user🔎\n\n   User found in:%s"%(becek)
                                   if settings["footer"] == True:sendFooter(msg.to,tobat)
                                   else:client.sendReplyMessage(msg.id, msg.to,tobat)
 #=============( E N D   O F   G  E T    M E N U   )====================)
@@ -1011,7 +1011,7 @@ def clientBot(op):
                             midSelect = len(midMembers)//20
                             for mentionMembers in range(midSelect+1):
                                 no = 0
-                                ret_ = "「 Mention Group 」\n• G-Operation\n• Simple SB\n"
+                                ret_ = "「 Mention Group 」\n• SKT-Operation\n• ขออนุญาติ Tag นะครับ SB\n"
                                 dataMid = []
                                 for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                     dataMid.append(dataMention.mid)
@@ -1035,7 +1035,7 @@ def clientBot(op):
                          if msg.toType == 2:
                             groups = client.getGroup(msg.to)
                             no = 1
-                            ngentot = "• G-Operation\n• Pendinglist:\n"
+                            ngentot = "• SKT-Operation\n• Pendinglist:\n"
                             if groups.invitee is None:client.sendMessage(msg.to,"Pending member not found.")
                             else:
                                for s in groups.invitee:
@@ -1050,7 +1050,7 @@ def clientBot(op):
                          if msg.toType == 2:
                             groups = client.getGroup(msg.to)
                             no = 1
-                            ngentot = "• G-Operation\n• Memberlist:\n"
+                            ngentot = "• SKT-Operation\n• Memberlist:\n"
                             if groups.members is None:client.sendMessage(msg.to,"Pending member not found.")
                             else:
                                for s in groups.members:
@@ -1167,7 +1167,7 @@ def clientBot(op):
                               client.sendReplyMessage(msg.id,msg.to,"Gunakan key anda!\nContoh: {} Settings".format(manage["keyname"].title()))
                            else:pass
                         if ang.lower() == key + "settings":
-                           jamb = "💻 G-Oᴘᴇʀᴀᴛɪᴏɴ 💻\n     「 Settings 」"
+                           jamb = "💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻\n     「 Settings 」"
                            if msg.to not in protectMax and msg.to not in protectStaff:jamb += "\n\n🔴 All Protection"
                            else:
                               if msg.to in protectMax:jamb += "\n\n🟢 Protect max"
@@ -1182,7 +1182,7 @@ def clientBot(op):
                            else:jamb += "\n🔴 Auto Leave"
                            if manage["adders"] == True:"\n🟢 Add Message"
                            else:jamb += "\n🔴 Add Message"
-                           jamb += "\n\n• G-Operation V.0.2"
+                           jamb += "\n\n• SKT-Operation V.0.2"
                            if settings["footer"] == True:sendFooter(msg.to,jamb)
                            else:client.sendReplyMessage(msg.id,msg.to,jamb)
                         if ang.lower() == "sider on":
@@ -1216,7 +1216,7 @@ def clientBot(op):
                                 else:
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar already disabled.")              
                         if ang.lower() == key +  'lurk on':
-                            tz = pytz.timezone("Asia/Jakarta")
+                            tz = pytz.timezone("Asia/Bangkok")
                             timeNow = datetime.now(tz=tz)
                             readTime = "Starting read point\nTime: " + timeNow.strftime('%H:%M:%S')
                             if msg.to in cctv['readPoint']:
@@ -1251,7 +1251,7 @@ def clientBot(op):
                                  client.sendReplyMessage(msg.id, msg.to, readTime)                                       
                                  client.sendReplyMessage(msg.id, msg.to, "Type 'Lurkers' to read sider.")                                       
                         if ang.lower() == key + 'lurk off':
-                            tz = pytz.timezone("Asia/Jakarta")
+                            tz = pytz.timezone("Asia/Bangkok")
                             timeNow = datetime.now(tz=tz)
                             readTime =  "Lurk point deleted\nTime: " + timeNow.strftime('%H:%M:%S')
                             if msg.to not in cctv['readPoint']:
@@ -1268,7 +1268,7 @@ def clientBot(op):
                                 client.sendReplyMessage(msg.id, msg.to,readTime)                
                         if ang.lower() == key + 'lurk reset':
                             if msg.toType == 2:
-                                tz = pytz.timezone("Asia/Jakarta")
+                                tz = pytz.timezone("Asia/Bangkok")
                                 timeNow = datetime.now(tz=tz)
                                 readTime = "\nTime: " + timeNow.strftime('%H:%M:%S')
                                 if msg.to in cctv["readPoint"]:
@@ -1287,7 +1287,7 @@ def clientBot(op):
                                     client.sendMessage(msg.id, msg.to, "Type 'Lurk on' first.")                                    
                         if ang.lower() == key +  'lurkers':
                             if msg.toType == 2:
-                                tz = pytz.timezone("Asia/Jakarta")
+                                tz = pytz.timezone("Asia/Bangkok")
                                 timeNow = datetime.now(tz=tz)
                                 readTime = "Time : " + timeNow.strftime('%H:%M:%S')
                                 if msg.to in cctv['readPoint']:
@@ -1301,7 +1301,7 @@ def clientBot(op):
                                         zx = ""
                                         zxc = ""
                                         zx2 = []
-                                        xpesan = 'G-Operation\nGroup reader:\n\n'
+                                        xpesan = 'SKT-Operation\nGroup reader:\n\n'
                                     for x in range(len(cmem)):
                                         xname = str(cmem[x].displayName)
                                         pesan = ''
