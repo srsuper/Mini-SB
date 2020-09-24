@@ -16,7 +16,7 @@ with open('cctv.json', 'r') as fp:
 with open('setting.json', 'r') as fp:
     manage = json.load(fp)
 #================================================================================#
-# J I K A   A N D A  M E N E M U K A N   K A T A - K A T A  C A B U L 
+# J I K A   A N D A  M E N E M U K A N   K A T A - K A T A  C A B U L
 #             P L E A S E  J A N G A N  B A P E R :V
 #================================================================================#
 client.log("User Token: {}\n────────────────────────────────────────────────────────────────".format(str(client.authToken)))
@@ -64,11 +64,11 @@ def dt_to_str(dt):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%02d Hours %02d Minute %02d Secs' % (hours, mins, secs)      
+    return '%02d Hours %02d Minute %02d Secs' % (hours, mins, secs)
 def waktuReb(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%02d' % (secs)      
+    return '%02d' % (secs)
 def gbirth(id,to,text):
     date = "%d-%m-%Y"
     timer = "%H:%M:%S"
@@ -78,7 +78,7 @@ def time_converter(time):
     converted_time = datetime.datetime.fromtimestamp(
         int(time)
     ).strftime('%I:%M %p')
-    return converted_time    
+    return converted_time
 def allowLiff():
     url = 'https://access.line.me/dialog/api/permissions'
     data = {
@@ -254,7 +254,7 @@ def sendOpera(to, profile):
     opera = [opera1,opera2,opera3]
     senorita = {"type": "flex","altText": "The SKT - Operation","contents": {"type": "carousel","contents": opera}}
     client.sendTemp(to,senorita)
- 
+
 def sendMention(to, text="", mids=[]):
     arrData = ""
     arr = []
@@ -282,7 +282,7 @@ def sendMention(to, text="", mids=[]):
         arr.append(arrData)
         textx += mention + str(text)
     client.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    
+
 def clientBot(op):
     try:
         if op.type == 0:
@@ -290,8 +290,8 @@ def clientBot(op):
         if settings["logout"] == True:
             sys.exit()
         if op.type == 26:
-            msg = op.message            
-            runS = botStart - time.time() 
+            msg = op.message
+            runS = botStart - time.time()
             if waktuReb(runS) == waktuReb(5):
                 if manage["target"] != {}:
                    client.sendMessage(msg.to,manage["target"],"Bot active again")
@@ -299,7 +299,7 @@ def clientBot(op):
             else:pass
         if op.type == 55:
             try:
-                if op.param1 in cctv['Point']:   
+                if op.param1 in cctv['Point']:
                     if op.param2 not in cctv['Point3'][op.param1]:
                        try:uprofile = "https://obs.line-scdn.net/" + client.getContact(op.param2).pictureStatus
                        except:uprofile = "https://imagizer.imageshack.com/v2/377x338q90/922/Z9ocJr.jpg"
@@ -334,7 +334,7 @@ def clientBot(op):
                 if op.param2 not in manage["whitelist"]:
                    manage["blacklist"][op.param2] = True
                    with open('setting.json', 'w') as fp:
-                      json.dump(manage, fp, sort_keys=True, indent=4)                  
+                      json.dump(manage, fp, sort_keys=True, indent=4)
 
         if op.type == 19:
            if op.param1 in protectStaff:
@@ -342,13 +342,13 @@ def clientBot(op):
                    if op.param2 not in manage["whitelist"]:
                       manage["blacklist"][op.param2] = True
                       with open('setting.json', 'w') as fp:
-                          json.dump(manage, fp, sort_keys=True, indent=4)                  
+                          json.dump(manage, fp, sort_keys=True, indent=4)
                       try:
                          client.kickoutFromGroup(op.param1,[op.param2])
                          client.findAndAddContactsByMid(op.param3)
                          client.inviteIntoGroup(op.param1,[op.param3])
                       except:pass
-                   else:pass               
+                   else:pass
                else:pass
 
         if op.type == 17:
@@ -360,7 +360,7 @@ def clientBot(op):
                       sendMention(op.param1,ngentu,[op.param2])
                       client.sendContact(op.param1,Goperation)
                    else:
-                      ngentu = "Hi @! \nWelcome to " + jangan.name 
+                      ngentu = "Hi @! \nWelcome to " + jangan.name
                       sendMention(op.param1,ngentu,[op.param2])
                       client.sendContact(op.param1,Goperation)
 
@@ -378,7 +378,7 @@ def clientBot(op):
         if op.type == 5:
            if manage["adders"] == True:
                if op.param1 not in manage["blacklist"]:
-                   if manage["addmsg"] == "":sendMention(op.param1,"Hi @! \nThank u for add me :)",[op.param1])
+                   if manage["addmsg"] == "":sendMention(op.param1,"สวัสดี❤️ @! \nขอบคุณที่เพิ่มเรา เป็นเพื่อน!! :)",[op.param1])
                    else:
                       text = "Hi @! \n" + manage["addmsg"]
                       sendMention(op.param1,text,[op.param1])
@@ -388,7 +388,7 @@ def clientBot(op):
                if op.param2 not in manage["whitelist"]:
                   manage["blacklist"][op.param2] = True
                   with open('setting.json', 'w') as fp:
-                      json.dump(manage, fp, sort_keys=True, indent=4)                  
+                      json.dump(manage, fp, sort_keys=True, indent=4)
                   try:
                       client.kickoutFromGroup(op.param1,[op.param2])
                       client.findAndAddContactsByMid(op.param3)
@@ -408,7 +408,7 @@ def clientBot(op):
                   manage["blacklist"][op.param2] = True
                   with open('setting.json', 'w') as fp:
                     json.dump(manage, fp, sort_keys=True, indent=4)
-                  try:client.kickoutFromGroup(op.param1,[op.param2])                                         
+                  try:client.kickoutFromGroup(op.param1,[op.param2])
                   except:pass
                   mbul = client.getGroup(op.param1)
                   no = 0
@@ -448,10 +448,10 @@ def clientBot(op):
                   with open('setting.json', 'w') as fp:
                     json.dump(manage, fp, sort_keys=True, indent=4)
                   try:
-                     client.kickoutFromGroup(op.param1,[op.param2])                     
+                     client.kickoutFromGroup(op.param1,[op.param2])
                      client.findAndAddContactsByMid(op.param3)
                      client.inviteIntoGroup(op.param1,[op.param3])
-                  except:pass                   
+                  except:pass
 
         if op.type == 11:
            if op.param1 in protectMax and op.param3 == "4":
@@ -471,7 +471,7 @@ def clientBot(op):
                   if hoax.preventedJoinByTicket == False:
                      abc = client.getGroup(op.param1)
                      abc.preventedJoinByTicket = True
-                     client.updateGroup(abc)                  
+                     client.updateGroup(abc)
 
         if op.type == 11:
            if op.param1 in protectMax and op.param3 == "1":
@@ -487,7 +487,7 @@ def clientBot(op):
                       try:client.kickoutFromGroup(op.param1,[op.param2])
                       except:pass
                else:
-                  abc = client.getGroup(op.param1).name                     
+                  abc = client.getGroup(op.param1).name
                   manage["gname"][op.param1] = abc
                   with open('setting.json', 'w') as fp:
                      json.dump(manage, fp, sort_keys=True, indent=4)
@@ -551,14 +551,14 @@ def clientBot(op):
                 msg.to = msg.to
                 msg_id = msg.id
                 if msg.toType == 0 or msg.toType == 2:
-                 if msg.contentType == 2:      	
+                 if msg.contentType == 2:
                     if settings['ChangeVideoProfile'] == True:
                         client.downloadObjectMsg(msg.id,'path','video.mp4')
                         print('[NOTIF] VIDEO PROFILE PROCESSING')
                         client.sendMessage(msg.to, "Send picture to be profiled")
                         settings['ChangeVideoProfile']=False
                         settings['ChangeVideoProfile2']=True
-                 if msg.contentType == 1: 
+                 if msg.contentType == 1:
                     if settings['ChangeVideoProfile2'] == True:
                        client.downloadObjectMsg(msg.id,'path','foto.jpg')
                        client.updateProfileVideoPicture('video.mp4','foto.jpg')
@@ -571,7 +571,7 @@ def clientBot(op):
                        settings["changePictureProfile"] = False
                        client.updateProfilePicture(path)
                        client.deleteFile(path)
-                       client.sendMessage(msg.to, "Profile image updated.")                                             
+                       client.sendMessage(msg.to, "Profile image updated.")
                     if msg.to in settings["changeGroupPicture"]:
                        path = client.downloadObjectMsg(msg_id)
                        del settings["changeGroupPicture"][msg.to]
@@ -579,8 +579,8 @@ def clientBot(op):
                        client.deleteFile(path)
                        client.sendMessage(msg.to, "Group image updated.")
             except Exception as error:
-                client.sendMessage(msg.to, "{}".format(str(error))) 
-                traceback.print_tb(error.__traceback__)                
+                client.sendMessage(msg.to, "{}".format(str(error)))
+                traceback.print_tb(error.__traceback__)
         if op.type == 25:
             try:
                 msg = op.message
@@ -594,7 +594,7 @@ def clientBot(op):
                  if msg.contentType == 0:
                     if ang is None:
                     	pass
-                    else:                    	
+                    else:
                         if ang.lower() == "help":
                            if manage["keyname"]  !="":
                               client.sendReplyMessage(msg.id,msg.to,"Gunalan key anda!\nContoh: {} Help".format(manage["keyname"].title()))
@@ -604,7 +604,7 @@ def clientBot(op):
                            else: gop = manage["keyname"].title() + " "
                            try:
                              ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 SKT Selfbot 」"
+                             ang_ += "\n「 ✦ รายการคำสั่งบอท ✦ 」"
                              ang_ += "\n\nMain Menu:"
                              ang_ += "\n  1. " + gop + "Getmenu"
                              ang_ += "\n  2. " + gop + "Selfmenu"
@@ -624,7 +624,7 @@ def clientBot(op):
                            else: gop = manage["keyname"].title() + " "
                            try:
                              ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 SKT Selfbot 」"
+                             ang_ += "\n「 ✦ รายการคำสั่ง ✦ 」"
                              ang_ += "\n\nGet Menu:"
                              ang_ += "\n  1. " + gop + "Geturl"
                              ang_ += "\n  2. " + gop + "Getmid @"
@@ -646,7 +646,7 @@ def clientBot(op):
                            else: gop = manage["keyname"].title() + " "
                            try:
                              ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 SKT Selfbot 」"
+                             ang_ += "\n「 ✦ รายการคำสั่ง ✦ 」"
                              ang_ += "\n\nSelf Menu:"
                              ang_ += "\n  1. " + gop + "Me"
                              ang_ += "\n  2. " + gop + "Help"
@@ -672,7 +672,7 @@ def clientBot(op):
                            else: gop = manage["keyname"].title() + " "
                            try:
                              ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 SKT Selfbot 」"
+                             ang_ += "\n「 ✦ รายการคำสั่ง ✦ 」"
                              ang_ += "\n\nGroup Menu:"
                              ang_ += "\n  1. " + gop + "/Bye"
                              ang_ += "\n  2. " + gop + "Ginfo"
@@ -712,7 +712,7 @@ def clientBot(op):
                            else: gop = manage["keyname"].title() + " "
                            try:
                              ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 SKT Selfbot 」"
+                             ang_ += "\n「 ✦ รายการคำสั่ง ✦ 」"
                              ang_ += "\n\nGroup settings:"
                              ang_ += "\n  1. " + gop + "Settings"
                              ang_ += "\n  2. " + gop + "Lurk reset"
@@ -742,7 +742,7 @@ def clientBot(op):
                            else: gop = manage["keyname"].title() + " "
                            try:
                              ang_ = "  💻 SKT-Oᴘᴇʀᴀᴛɪᴏɴ 💻"
-                             ang_ += "\n   「 Mini Selfbot 」"
+                             ang_ += "\n「 ✦ รายการคำสั่ง ✦ 」"
                              ang_ += "\n\nGroup Protect:"
                              ang_ += "\n  1. " + gop + "Protect staff"
                              ang_ += "\n  2. " + gop + "Protect max"
@@ -764,7 +764,7 @@ def clientBot(op):
                              if settings["footer"] == True:sendFooter(msg.to,ang_)
                              else:client.sendReplyMessage(msg.id,msg.to,ang_)
                            except:pass
-#=============( G E T    M E N U    C O M M A N D)====================)                       
+#=============( G E T    M E N U    C O M M A N D)====================)
                         if ang.lower() == key +  "geturl":
                             if msg.toType == 2:
                                 entot = client.getGroup(msg.to)
@@ -776,13 +776,13 @@ def clientBot(op):
                                 else:
                                    client.updateGroup(entot)
                                    set = client.reissueGroupTicket(msg.to)
-                                   client.sendReplyMessage(msg.id,msg.to, "Group Ticket : \nhttps://line.me/R/ti/g/{}".format(str(set)))                        
+                                   client.sendReplyMessage(msg.id,msg.to, "Group Ticket : \nhttps://line.me/R/ti/g/{}".format(str(set)))
                         if ang.lower().startswith(key + "getmid "):
                            if msg.toType == 2:
                               key = eval(msg.contentMetadata["MENTION"])
                               key1 = key["MENTIONEES"][0]["M"]
                               mi = client.getContact(key1)
-                              client.sendReplyMessage(msg.id,msg.to,key1)                        
+                              client.sendReplyMessage(msg.id,msg.to,key1)
                         if ang.lower().startswith(key + "getpict "):
                          if msg.toType == 2:
                            if msg.contentMetadata is not None:
@@ -796,7 +796,7 @@ def clientBot(op):
                                   angimg = "https://obs.line-scdn.net/" + profile.pictureStatus
                                   if settings["footer"] == True:imageFooter(msg.to,angimg)
                                   else:client.sendImageWithURL(msg.to, angimg)
-                           else:client.sendReplyMessage(msg.id,msg.to,"No image found")                        
+                           else:client.sendReplyMessage(msg.id,msg.to,"No image found")
                         if ang.lower().startswith(key + "getcover "):
                          if msg.toType == 2:
                            if msg.contentMetadata is not None:
@@ -828,10 +828,10 @@ def clientBot(op):
                             if contact.statusMessage is None or contact.displayName =="":
                                client.sendReplyMessage(msg.id,msg.to,"Display name not found.")
                             else:
-                               client.sendReplyMessage(msg.id, msg.to, "「 Profile Name」\n" + contact.displayName)                        
+                               client.sendReplyMessage(msg.id, msg.to, "「 Profile Name」\n" + contact.displayName)
                         if ang.lower().startswith("getgroups "):
                           if msg.toType == 2:
-                             if 'MENTION' in msg.contentMetadata.keys() != None:                    
+                             if 'MENTION' in msg.contentMetadata.keys() != None:
                                names = re.findall(r'@(\w+)', ang)
                                mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                                mentionees = mention['MENTIONEES']
@@ -845,7 +845,7 @@ def clientBot(op):
                                       if mention['M'] in eWee:
                                           becek += "\n     %i. " %no + mmk[a].name
                                           no = (no+1)
-                               if becek == "":client.sendMessage(msg.to, "User Not found")                                  
+                               if becek == "":client.sendMessage(msg.to, "User Not found")
                                else:
                                   tobat =  "• SKT-Oᴘᴇʀᴀᴛɪᴏɴ\n• Tracking user🔎\n\n   User found in:%s"%(becek)
                                   if settings["footer"] == True:sendFooter(msg.to,tobat)
@@ -856,7 +856,7 @@ def clientBot(op):
 
 
 #=============( S E L F   M E N U  C O M M A N D )====================)
-                        if ang.lower() == key + "me":                          
+                        if ang.lower() == key + "me":
                             client.sendContact(msg.to,clientMid)
                         if ang.lower() == key + "me":
                             if msg.toType == 2:
@@ -874,12 +874,12 @@ def clientBot(op):
                             restartBot()
                         if ang.lower() == key + "sp" or ang.lower() == key + "speed":
                              japri = time.time()
-                             client.getProfile() 
+                             client.getProfile()
                              ngegas = time.time() - japri
                              client.sendMessage(msg.to, "Time: %.4f"%(ngegas))
                         if ang.lower() == key + "runtime":
                            kopi = time.time() - botStart
-                           ang = "Selfbot has been running for:\n"+waktu(kopi)
+                           ang = "SKT BOT กำลังทำงาน running for:\n"+waktu(kopi)
                            client.sendMessage(msg.to,ang)
                         if ang.lower() == key + "logout":
                            client.sendReplyMessage(msg.id,msg.to,"System shutdown. . .")
@@ -900,7 +900,7 @@ def clientBot(op):
                         if ang.lower() == key + "updategpict":
                            settings['changeGroupPicture'][msg.to] = True
                            client.sendMessage(msg.to, "Please send image.")
-                        if ang.lower().startswith(key + "updatebio: "):                       
+                        if ang.lower().startswith(key + "updatebio: "):
                          if msg.toType == 2:
                             jap = ang.lower().replace("updatebio: ","")
                             if len(jap) <= 100:
@@ -909,7 +909,7 @@ def clientBot(op):
                                client.updateProfile(profile)
                                client.sendReplyMessage(msg.id,msg.to, "Status bio changed to:\n" + jap)
                             else:client.sendReplyMessage(msg.id,msg.to,"Maksimal 100 karakter.")
-                        if ang.lower().startswith(key + "updatename: "):                       
+                        if ang.lower().startswith(key + "updatename: "):
                          if msg.toType == 2:
                             jap = ang.lower().split("updatename: ")[1]
                             if len(jap) <= 30:
@@ -918,13 +918,13 @@ def clientBot(op):
                                client.updateProfile(profile)
                                client.sendReplyMessage(msg.id,msg.to, "Profile name changed to:\n" + jap.title())
                             else:client.sendReplyMessage(msg.id,msg.to,"Maksimal 30 karakter.")
-                        if ang.lower().startswith(key + "lineid: "):                       
+                        if ang.lower().startswith(key + "lineid: "):
                             ang_id = ang.replace(key + "lineid: ","")
                             line_id = client.findContactsByUserid(line_id)
                             if True:
                                 client.sendMessage(msg.to,"http://line.me/ti/p/~" + angg_id)
                                 client.sendContact(msg.to,line_id.mid)
-                            else:client.sendReplyMessage(msg.id,msg.to,"Invalid Id name")                    
+                            else:client.sendReplyMessage(msg.id,msg.to,"Invalid Id name")
 #=============( E N D    O F    S E L F M E N U )====================)
 
 
@@ -945,7 +945,7 @@ def clientBot(op):
                                   msg.contentMetadata = {'mid': gareng}
                                   client.sendMessage(msg.to, "Group Creator:")
                                   client.sendMessage(msg.to,"",msg.contentMetadata,13)
-                              else:client.sendReplyMessage(msg.id,msg.to,"Group creator galau.")                       
+                              else:client.sendReplyMessage(msg.id,msg.to,"Group creator galau.")
                         if ang.lower() == key + "ginfo":
                             if msg.toType == 2:
                                 group = client.getGroup(msg.to)
@@ -963,7 +963,7 @@ def clientBot(op):
                                 else:
                                     gQr = "Opened"
                                     gTicket = "https://line.me/R/ti/g/{}".format(str(client.reissueGroupTicket(group.id)))
-                                japri = "♡Group info♡"
+                                japri = "♡ Group info ♡"
                                 japri += "\n\n•Group Name : {}".format(str(group.name))
                                 japri += "\n•ID Group :\n {}".format(group.id)
                                 japri += "\n•Created By : {}".format(str(gCreator))
@@ -983,7 +983,7 @@ def clientBot(op):
                         if ang.lower() == key + "grouppict":
                          if msg.toType == 2:
                             hoax = client.getGroup(msg.to)
-                            if hoax.pictureStatus is None or hoax.pictureStatus == "":client.sendMessage(msg.to,"Group picture not found")                                
+                            if hoax.pictureStatus is None or hoax.pictureStatus == "":client.sendMessage(msg.to,"Group picture not found")
                             else:
                                 ang = "https://obs.line-scdn.net/"+ hoax.pictureStatus
                                 if settings["footer"]== True:sendFooter(msg.to,ang)
@@ -1011,7 +1011,7 @@ def clientBot(op):
                             midSelect = len(midMembers)//20
                             for mentionMembers in range(midSelect+1):
                                 no = 0
-                                ret_ = "「 Mention Group 」\n• SKT-Operation\n• ขออนุญาติ Tag นะครับ SB\n"
+                                ret_ = "「 สมาชิกทั้งหมดในกลุ่ม 」\n• SKT-Operation\n• ขออนุญาติ Tag นะครับ \n"
                                 dataMid = []
                                 for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                     dataMid.append(dataMention.mid)
@@ -1068,20 +1068,20 @@ def clientBot(op):
 
 
 #=============( G R O U P   S  E  T T I N G    M E N U  )====================)
-                        if ang.lower().startswith(key + "groupname: "):                       
+                        if ang.lower().startswith(key + "groupname: "):
                          if msg.toType == 2:
                             angg = client.getGroup(msg.to)
                             anng = ang.lower().split("groupname: ")[1]
                             angg.name = anng.title()
                             client.updateGroup(angg)
-                        if ang.lower().startswith(key + "groupcast: "):                       
+                        if ang.lower().startswith(key + "groupcast: "):
                             ang_ = ang.lower().split("groupcast: ")[1]
                             garp = client.getGroupIdsJoined()
-                            monkey = "Mini Selfbot By: @! \nBroadcasted by: @! \n────────────────\n" + ang_
+                            monkey = "SKT Selfbot By: @! \nBroadcasted by: @! \n────────────────\n" + ang_
                             target = client.getGroups(garp)
                             for a in range(len(target)):
-                               sendMention(target[a].id, monkey,[Goperation,[msg._from]]) 
-                               time.sleep(0.06)                        
+                               sendMention(target[a].id, monkey,[Goperation,[msg._from]])
+                               time.sleep(0.06)
                             client.sendReplyMessage(msg.id,msg.to,"Broadcasted to %s groups"%(str(len(target))))
                         if ang.lower().startswith(key + "setkey: "):
                            if msg.toType == 2:
@@ -1131,8 +1131,8 @@ def clientBot(op):
                                     client.findAndAddContactsByMid(target)
                                     client.inviteIntoGroup(msg.to, [target])
                                     client.sendMessage(msg.to, client.getContact(target).displayName + " has been invited.")
-                                  except:pass                                   
-                             else:pass                        
+                                  except:pass
+                             else:pass
                         if ang.lower() == manage["nukekey"]:
                            if manage["nukekey"] !="":
                                hoax = client.getGroup(msg.to)
@@ -1190,16 +1190,16 @@ def clientBot(op):
                               client.sendReplyMessage(msg.id,msg.to,"Gunakan key anda!\nContoh: {} Sider on".format(manage["keyname"].title()))
                            else:pass
                         if ang.lower() == key + "sider on":
-                            if msg.toType == 2:                     
+                            if msg.toType == 2:
                                 if msg.to in cctv["Point"]:
                                     cctv["Point3"][msg.to] = {}
-                                    with open('cctv.json', 'w') as fp:                            
+                                    with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar restarting..")
                                 else:
                                     cctv["Point"][msg.to]= True
                                     cctv["Point3"][msg.to] = {}
-                                    with open('cctv.json', 'w') as fp:                            
+                                    with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar running..")
                         if ang.lower() == "sider off":
@@ -1207,14 +1207,14 @@ def clientBot(op):
                               client.sendReplyMessage(msg.id,msg.to,"Gunakan key anda!\nContoh: {} Sider on".format(manage["keyname"].title()))
                            else:pass
                         if ang.lower() == key +  "sider off":
-                            if msg.toType == 2:                     
+                            if msg.toType == 2:
                                 if msg.to in cctv["Point"]:
                                     del cctv["Point"][msg.to]
-                                    with open('cctv.json', 'w') as fp:                            
+                                    with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar disabled.")
                                 else:
-                                    client.sendReplyMessage(msg.id,msg.to,"Cek radar already disabled.")              
+                                    client.sendReplyMessage(msg.id,msg.to,"Cek radar already disabled.")
                         if ang.lower() == key +  'lurk on':
                             tz = pytz.timezone("Asia/Bangkok")
                             timeNow = datetime.now(tz=tz)
@@ -1248,8 +1248,8 @@ def clientBot(op):
                                  cctv['ROM'][msg.to] = {}
                                  with open('cctv.json', 'w') as fp:
                                      json.dump(cctv, fp, sort_keys=True, indent=4)
-                                 client.sendReplyMessage(msg.id, msg.to, readTime)                                       
-                                 client.sendReplyMessage(msg.id, msg.to, "Type 'Lurkers' to read sider.")                                       
+                                 client.sendReplyMessage(msg.id, msg.to, readTime)
+                                 client.sendReplyMessage(msg.id, msg.to, "Type 'Lurkers' to read sider.")
                         if ang.lower() == key + 'lurk off':
                             tz = pytz.timezone("Asia/Bangkok")
                             timeNow = datetime.now(tz=tz)
@@ -1265,7 +1265,7 @@ def clientBot(op):
                                             json.dump(cctv, fp, sort_keys=True,indent=4)
                                 except:
                                       pass
-                                client.sendReplyMessage(msg.id, msg.to,readTime)                
+                                client.sendReplyMessage(msg.id, msg.to,readTime)
                         if ang.lower() == key + 'lurk reset':
                             if msg.toType == 2:
                                 tz = pytz.timezone("Asia/Bangkok")
@@ -1284,7 +1284,7 @@ def clientBot(op):
                                     client.sendReplyMessage(msg.id, msg.to, "Reset reading point." + readTime)
                                     client.sendReplyMessage(msg.id, msg.to, "Type 'Lurkers' to read sider.")
                                 else:
-                                    client.sendMessage(msg.id, msg.to, "Type 'Lurk on' first.")                                    
+                                    client.sendMessage(msg.id, msg.to, "Type 'Lurk on' first.")
                         if ang.lower() == key +  'lurkers':
                             if msg.toType == 2:
                                 tz = pytz.timezone("Asia/Bangkok")
@@ -1297,7 +1297,7 @@ def clientBot(op):
                                         chiya = []
                                         for rom in cctv["ROM"][msg.to].items():
                                             chiya.append(rom[1])
-                                        cmem = client.getContacts(chiya) 
+                                        cmem = client.getContacts(chiya)
                                         zx = ""
                                         zxc = ""
                                         zx2 = []
@@ -1365,7 +1365,7 @@ def clientBot(op):
                                    else:
                                          manage["welcomsg"][msg.to] = True
                                          with open('setting.json', 'w') as fp:
-                                             json.dump(manage, fp, sort_keys=True, indent=4)                                     
+                                             json.dump(manage, fp, sort_keys=True, indent=4)
                                          if manage["welcomeSet"] !="":client.sendMessage(msg.to,"Welcome message in group\n" + client.getGroup(msg.to).name + " now is active")
                                          else:client.sendMessage(msg.to,"Welcome message not set.\nType 'welcome set: your message' to set it,")
                             if text == "off":
@@ -1444,7 +1444,7 @@ def clientBot(op):
                                  hoax = client.findGroupByTicket(text)
                                  client.acceptGroupInvitationByTicket(hoax.id,text)
                                  client.sendMessage(msg.to, "Success join to %s" % str(hoax.name))
-                              except:pass     
+                              except:pass
                         if '/ti/g/' in ang.lower():
                             link_re = re.compile('(?:line\:\/|line\.me\/R)\/ti\/g\/([a-zA-Z0-9_-]+)?')
                             links = link_re.findall(ang)
@@ -1458,7 +1458,7 @@ def clientBot(op):
                                     group=client.findGroupByTicket(ticket_id)
                                     if group.id in mygrp:client.sendReplyMessage(msg.id,msg.to,"Already in this group")
                                     else:
-                                       client.acceptGroupInvitationByTicket(group.id,ticket_id)                                       
+                                       client.acceptGroupInvitationByTicket(group.id,ticket_id)
                                        client.sendMessage(msg.to,"Success join to %s" % str(group.name))
 #=============( E N D   O F   S E L F B O T  S E T T I N G)====================)
 
@@ -1467,20 +1467,20 @@ def clientBot(op):
 
 
  #=============( START   O F   G R O U P  P R O T E C T)====================)
-                        
+
                         if ang.lower() == key + "add whitelist":
                           settings["addwhitelist"] = True
                           client.sendMessage(msg.to,"Send a contact")
                         if ang.lower() == key + "del whitelist":
                           settings["delwhitelist"] = True
-                          client.sendMessage(msg.to,"Send a contact") 
+                          client.sendMessage(msg.to,"Send a contact")
                         if ang.lower() == key + "add blacklist":
                           settings["addblacklist"] = True
                           client.sendMessage(msg.to,"Send a contact")
                         if ang.lower() == key + "del blacklist":
                           settings["delblacklist"] = True
-                          client.sendMessage(msg.to,"Send a contact")                         
-                        if ang.lower().startswith(key + "whitelist on "):                           
+                          client.sendMessage(msg.to,"Send a contact")
+                        if ang.lower().startswith(key + "whitelist on "):
                          if msg.toType == 2:
                             key = eval(msg.contentMetadata["MENTION"])
                             key["MENTIONEES"][0]["M"]
@@ -1496,7 +1496,7 @@ def clientBot(op):
                                              json.dump(manage, fp, sort_keys=True, indent=4)
                                          client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" add to whitelist.")
                                       except:pass
-                        
+
                         if ang.lower().startswith(key + "whitelist del "):
                             key = eval(msg.contentMetadata["MENTION"])
                             key["MENTIONEES"][0]["M"]
@@ -1519,7 +1519,7 @@ def clientBot(op):
                                hoax = [o for o in manage["whitelist"]]
                                cekmid = len(hoax)//20
                                no = 1
-                               for xang in range(cekmid +1): 
+                               for xang in range(cekmid +1):
                                    males = "The G-Operation\nWhitelist:\n"
                                    asw = []
                                    for target in hoax[xang*20:(xang+1)*20]:
@@ -1534,9 +1534,9 @@ def clientBot(op):
                             else:
                                manage["whitelist"] = {}
                                with open('setting.json', 'w') as fp:
-                                  json.dump(manage, fp, sort_keys=True, indent=4)                               
+                                  json.dump(manage, fp, sort_keys=True, indent=4)
                                client.sendReplyMessage(msg.id,msg.to,"Whitelist cleared.")
-                        if ang.lower().startswith(key + "blacklist on "):                           
+                        if ang.lower().startswith(key + "blacklist on "):
                          if msg.toType == 2:
                             key = eval(msg.contentMetadata["MENTION"])
                             key["MENTIONEES"][0]["M"]
@@ -1575,7 +1575,7 @@ def clientBot(op):
                                hoax = [o for o in manage["blacklist"]]
                                cekmid = len(hoax)//20
                                no = 1
-                               for xang in range(cekmid +1): 
+                               for xang in range(cekmid +1):
                                    males = "The G-Operation\nBlacklist:\n"
                                    asw = []
                                    for target in hoax[xang*20:(xang+1)*20]:
@@ -1590,7 +1590,7 @@ def clientBot(op):
                             else:
                                manage["blacklist"] = {}
                                with open('setting.json', 'w') as fp:
-                                  json.dump(manage, fp, sort_keys=True, indent=4)                               
+                                  json.dump(manage, fp, sort_keys=True, indent=4)
                                client.sendReplyMessage(msg.id,msg.to,"Blacklist cleared.")
                         if ang.lower() == key + "findblacklist":
                          if msg.toType == 2:
@@ -1600,12 +1600,12 @@ def clientBot(op):
                                 ngewe = []
                                 for ewe in mari.members:
                                     if ewe.mid in manage["blacklist"]:
-                                        ngewe.append(ewe.mid)                                
+                                        ngewe.append(ewe.mid)
                                 if ngewe == []:client.sendReplyMessage(msg.id,msg.to,"No blacklist found\nin '{}'".format(mari.name))
                                 else:
                                    hoax = [o for o in ngewe]
                                    cekmid = len(hoax)//20
-                                   for angx in range(cekmid +1): 
+                                   for angx in range(cekmid +1):
                                       enak = "• G-Operation\n• Find Blacklist:\n"
                                       asw = []
                                       no = 1
@@ -1613,7 +1613,7 @@ def clientBot(op):
                                             enak += "\n  {}. @!\n".format(no)
                                             no = (no+1)
                                             asw.append(target)
-                                      enak += "\n\nBe alert!「 {} 」here.\nGroup: {}".format(len(asw),mari.name)             
+                                      enak += "\n\nBe alert!「 {} 」here.\nGroup: {}".format(len(asw),mari.name)
                                       sendMention(msg.to,enak,asw)
 
                         if ang.lower().startswith(key + "protect "):
@@ -1637,7 +1637,7 @@ def clientBot(op):
                                         client.sendMessage(msg.to,"Protect max enabled.")
                                      else:client.sendMessage(msg.to,"Protect max enabled.")
                                  else:
-                                    if msg.to not in protectStaff and msg.to not in protectMax:    
+                                    if msg.to not in protectStaff and msg.to not in protectMax:
                                         manage["proMax"][msg.to] = True
                                         jap = client.getGroup(msg.to)
                                         manage["gname"][msg.to] = jap.name
@@ -1646,10 +1646,10 @@ def clientBot(op):
                                         if client.getGroup(msg.to).preventedJoinByTicket == False:
                                            hoax = client.getGroup(msg.to)
                                            hoax.preventedJoinByTicket = True
-                                           client.updateGroup(hoax)           
+                                           client.updateGroup(hoax)
                                            client.sendMessage(msg.to,"Protect max enabled.")
                                         else:client.sendMessage(msg.to,"Protect max enabled.")
-                            elif text == "staff":               
+                            elif text == "staff":
                                if msg.to in protectStaff:
                                   client.sendMessage(msg.to,"Protect staff already enabled.")
                                elif msg.to in protectMax:
@@ -1674,10 +1674,10 @@ def clientBot(op):
                                    if client.getGroup(msg.to).preventedJoinByTicket == False:
                                       hoax = client.getGroup(msg.to)
                                       hoax.preventedJoinByTicket = True
-                                      client.updateGroup(hoax)           
+                                      client.updateGroup(hoax)
                                       client.sendMessage(msg.to,"Protect staff enabled.")
                                    else:client.sendMessage(msg.to,"Protect staff enabled.")
-                            elif text == "none":    
+                            elif text == "none":
                                if msg.to not in protectStaff and msg.to not in protectMax:
                                   client.sendMessage(msg.to,"Protection already disabled.")
                                else:
