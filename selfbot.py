@@ -356,11 +356,11 @@ def clientBot(op):
                if op.param2 not in manage["blacklist"]:
                    jangan = client.getGroup(op.param1)
                    if op.param1 in manage["welcomsg"]:
-                      ngentu = "Hi @! \nWelcome to " + jangan.name + "\n" + manage["welcomeSet"][op.param1]
+                      ngentu = "สวัสดี @! \nยินดีต้อนรับ สู่ ⌬ " + jangan.name + "\n" + manage["welcomeSet"][op.param1]
                       sendMention(op.param1,ngentu,[op.param2])
                       client.sendContact(op.param1,Goperation)
                    else:
-                      ngentu = "Hi @! \nWelcome to " + jangan.name
+                      ngentu = "สวัสดี @! \nยินดีต้อนรับ สู่ ⌬ " + jangan.name
                       sendMention(op.param1,ngentu,[op.param2])
                       client.sendContact(op.param1,Goperation)
 
@@ -1011,7 +1011,7 @@ def clientBot(op):
                             midSelect = len(midMembers)//20
                             for mentionMembers in range(midSelect+1):
                                 no = 0
-                                ret_ = "「 สมาชิกทั้งหมดในกลุ่ม 」\n• SKT-Operation\n• ขออนุญาติ Tag นะครับ \n"
+                                ret_ = "「 สมาชิกทั้งหมดในกลุ่ม 」\n• SKT-Operation ❂➣\n• ขออนุญาติ Tag นะครับ \n"
                                 dataMid = []
                                 for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                     dataMid.append(dataMention.mid)
